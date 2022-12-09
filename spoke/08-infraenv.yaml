@@ -1,0 +1,25 @@
+apiVersion: agent-install.openshift.io/v1beta1
+kind: InfraEnv
+metadata:
+  labels:
+    agentclusterinstalls.extensions.hive.openshift.io/location: Rome
+    networkType: dhcp
+  name: ztp-sno
+  namespace: ztp-sno
+spec:
+  clusterRef:
+    name: ztp-sno
+    namespace: ztp-sno
+  sshAuthorizedKey: '<REPLACE_WITH_PUBLIC_SSH_KEY>'
+  agentLabelSelector:
+    matchLabels:
+      cluster-name: ztp-sno
+  pullSecretRef:
+    name: pullsecret-sno
+  agentLabels:
+    agentclusterinstalls.extensions.hive.openshift.io/location: Rome
+  cpuArchitecture: x86_64
+  ipxeScriptType: DiscoveryImageAlways
+  nmStateConfigLabelSelector:
+    matchLabels:
+      infraenvs.agent-install.openshift.io: ztp-sno
